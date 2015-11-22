@@ -1,19 +1,22 @@
 ---
 
 - src: https://github.com/superlumic/ansible-role-homebrew.git
-  name: roderik.superlumic-homebrew
+  name: superlumic.superlumic-homebrew
 
 - src: https://github.com/superlumic/ansible-role-osx-defaults.git
-  name: roderik.superlumic-osx-defaults
+  name: superlumic.superlumic-osx-defaults
 
 - src: https://github.com/superlumic/ansible-role-computername.git
-  name: roderik.superlumic-computername
+  name: superlumic.superlumic-computername
 
 - src: https://github.com/superlumic/ansible-role-cli.git
-  name: roderik.superlumic-cli
+  name: superlumic.superlumic-cli
 
 - src: https://github.com/superlumic/ansible-role-sublimetext.git
-  name: roderik.superlumic-sublimetext
+  name: superlumic.superlumic-sublimetext
 
 - src: https://github.com/superlumic/ansible-role-vim.git
-  name: roderik.superlumic-vim
+  name: superlumic.superlumic-vim
+
+- src: https://github.com/spencergibb/ansible-osx
+  name: battleschool.ansible-osx
