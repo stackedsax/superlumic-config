@@ -9,18 +9,11 @@
       with_items:
         - spotify
         - istat-menus
-        - dropbox
         - kaleidoscope
         - alfred
-        - hazel
-        - sonos
-        - tower
-        - skype
-        - bartender
-        - things
-        - sketch
-        - superduper
-        - vmware-fusion
+        - adium
+        - carbon-copy-cloner
+        - utorrent
     - name: create ssh directory
       become: yes
       file:
@@ -59,7 +52,7 @@
   vars:
     - computername: stackedsax-laptop
     - git_user_name: stackedsax
-    - git_user_email: ascammon@hotmailcom
+    - git_user_email: ascammon@hotmail.com
     - sublime_packages:
         - dest: "SideBarEnhancements"
           repo: "https://github.com/titoBouzout/SideBarEnhancements"
