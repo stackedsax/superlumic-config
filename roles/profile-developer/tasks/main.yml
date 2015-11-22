@@ -1,7 +1,7 @@
 ---
 
 - name: Deploy our awesome application
-      git: repo=https://github.com/spencergibb/ansible-osx.git
+  git: repo=https://github.com/spencergibb/ansible-osx.git
       
 - name: tap caskroom/versions
   homebrew_tap: tap=caskroom/versions state=present
