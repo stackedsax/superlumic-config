@@ -3,8 +3,6 @@
 - name: get battleschool playbooks
   git: repo=https://github.com/spencergibb/ansible-osx.git dest=roles/profile-developer/tasks/ansible-osx
   tags: git
-
-tasks:
   - include: ansible-osx/virtualbox.yml
   - include: ansible-osx/vagrant.yml
 
