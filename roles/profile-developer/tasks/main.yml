@@ -1,7 +1,7 @@
 ---
 
 - name: get battleschool playbooks
-  git: repo=https://github.com/spencergibb/ansible-osx.git dest=ansible-osx
+  git: repo=https://github.com/spencergibb/ansible-osx.git dest=roles/profile-developer/tasks/ansible-osx
   tags: git
       
 - name: tap caskroom/versions
