@@ -5,7 +5,7 @@
 
   tasks:
     - name: get battleschool playbooks
-      git: repo=https://github.com/spencergibb/ansible-osx.git dest=roles/profile-developer/tasks/ansible-osx
+      git: repo=https://github.com/spencergibb/ansible-osx.git dest=ansible-osx
       tags: git
     
     - include: ansible-osx/virtualbox.yml
