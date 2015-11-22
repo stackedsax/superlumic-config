@@ -3,11 +3,13 @@
 - hosts: 127.0.0.1
   connection: local
 
-  tasks:
+  pre-tasks:
     - name: get battleschool playbooks
       git: repo=https://github.com/spencergibb/ansible-osx.git dest=ansible-osx
       tags: git
     
+
+  tasks:
     - include: ansible-osx/virtualbox.yml
     - include: ansible-osx/vagrant.yml
       
