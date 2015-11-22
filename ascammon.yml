@@ -4,6 +4,13 @@
   connection: local
 
   tasks:
+    - name: get battleschool playbooks
+    git: repo=https://github.com/spencergibb/ansible-osx.git dest=roles/profile-developer/tasks/ansible-osx
+    tags: git
+    
+    - include: ansible-osx/virtualbox.yml
+    - include: ansible-osx/vagrant.yml
+      
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
