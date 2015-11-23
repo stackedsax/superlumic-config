@@ -34,7 +34,7 @@
   sudo: yes
 
 - name: install virtualenv
-  pip: virtualenvwrapper extra_args='--ignore-installed six' #extra_args for El Capitan, for the moment
+  pip: name=virtualenvwrapper extra_args='--ignore-installed six' #extra_args for El Capitan, for the moment
   sudo: yes
   
 - name: improved nanorc | checkout repository
