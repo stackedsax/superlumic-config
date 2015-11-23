@@ -48,6 +48,7 @@
 - name: terminal themes | install monokai theme
   git:
     repo: "https://github.com/stephenway/monokai.terminal.git"
+    dest: monokai.terminal
     version: "master"
     update: true
   tags: [configuration, theme, terminal]
