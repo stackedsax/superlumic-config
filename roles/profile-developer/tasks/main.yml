@@ -52,3 +52,5 @@
     version: "master"
     update: true
   tags: [configuration, theme, terminal]
+  
+ - command: open monokai.terminal/Monokai.terminal
