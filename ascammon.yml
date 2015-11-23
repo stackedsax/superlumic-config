@@ -3,32 +3,40 @@
 - hosts: 127.0.0.1
   connection: local
 
-#- include: ansible-osx/virtualbox.yml
-#- include: ansible-osx/vagrant.yml
-- include: ansible-playbooks/mou/mou.yaml
-
-
   tasks:
-  
-    - name: get battleschool playbooks
-      git: repo=https://github.com/spencergibb/ansible-osx.git dest=ansible-osx
-      tags: git
-      
-      
-    - name: get battleschool playbooks
-      git: repo=https://github.com/MWGriffin/ansible-playbooks.git dest=ansible-playbooks
-      tags: git      
       
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
-        - spotify
-        - istat-menus
-        - kaleidoscope
-        - alfred
+        - 1password
+        - ableton
         - adium
+        - alfred
+        - appium
         - carbon-copy-cloner
+        - cheatsheet
+        - chrome-devtools
+        - cyberduck
+        - firefox
+        - google-chrome
+        - istat-menus
+        - iterm2
+        - kaleidoscope
+        - karibiner
+        - macvim
+        - mou
+        - omnigraffle
+        - shiftit
+        - skype
+        - slack
+        - spotify
+        - torbrowser
+        - unrarx
         - utorrent
+        - vagrant
+        - virtualbox
+        - xquartz       
+        
     - name: create ssh directory
       become: yes
       file:
@@ -39,16 +47,19 @@
         mode: 0777
       with_items:
         - /etc/ssh
+        
     - name: personal ssh config
       become: yes
       copy:
         src: files/ssh_config
         dest: /etc/ssh_config
+        
     - name: personal ssh config in another location
       become: yes
       copy:
         src: files/ssh_config
-        dest: /etc/ssh/ssh_config        
+        dest: /etc/ssh/ssh_config
+
     - name: add to sudoers without password
       become: yes
       lineinfile: >
@@ -59,6 +70,7 @@
         create=true
       with_items:
         - { regexp: '^ascammon', line: 'ascammon ALL=(ALL) NOPASSWD: ALL' }
+        
     - name: Git Config | Install git completion
       raw: curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
       tags: git
@@ -101,6 +113,7 @@
           version: "master"
     - sublime_text_color_scheme: "Packages/Base16/base16-eighties.dark.tmTheme"
     - sublime_text_theme: "Soda Dark 3.sublime-theme"
+   
     - osx_defaults:
       - domain: 'com.apple.dock'
         key: 'autohide'
