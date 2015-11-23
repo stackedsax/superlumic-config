@@ -28,10 +28,11 @@
 
 
 - name: install virtualenv
-  pip: name=virtualenv
-  
-- name: install virtualenvwrapper
-  pip: name=virtualenvwrapper
+  pip: name={{ item }}
+  with_items:
+    - virtualenv
+    - virtualenvwrapper
+  sudo: yes
   
 - name: improved nanorc | checkout repository
   git:
@@ -40,3 +41,10 @@
     version: "master"
     update: true
   tags: [configuration, nano, improved-nanorc-checkout]
+
+- name: terminal themes | install monokai theme
+  git:
+    repo: "https://github.com/stephenway/monokai.terminal.git"
+    version: "master"
+    update: true
+  tags: [configuration, theme, terminal]
