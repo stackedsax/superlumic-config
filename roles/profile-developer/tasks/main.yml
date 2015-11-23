@@ -32,3 +32,11 @@
   
 - name: install virtualenvwrapper
   pip: name=virtualenvwrapper
+  
+- name: improved nanorc | checkout repository
+  git:
+    repo: "https://github.com/scopatz/nanorc.git"
+    dest: ~/.nano
+    version: "master"
+    update: true
+  tags: [configuration, nano, improved-nanorc-checkout]
