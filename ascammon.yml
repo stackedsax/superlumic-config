@@ -79,7 +79,7 @@
     - profile-developer
 
   vars:
-    - computername: stackedsax-laptop
+    - computername: soulg-laptop
     - git_user_name: stackedsax
     - git_user_email: ascammon@hotmail.com
     - sublime_packages:
