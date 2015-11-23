@@ -6,14 +6,12 @@
 - include: ansible-osx/virtualbox.yml
 - include: ansible-osx/vagrant.yml
 
-  pre-tasks:
+
+  tasks:
+  
     - name: get battleschool playbooks
       git: repo=https://github.com/spencergibb/ansible-osx.git dest=ansible-osx
       tags: git
-    
-
-  tasks:
-
       
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
