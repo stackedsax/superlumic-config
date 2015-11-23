@@ -18,6 +18,6 @@
 - src: https://github.com/superlumic/ansible-role-vim.git
   name: roderik.superlumic-vim
 
-- src: https://github.com/stackedsax/dotfiles.git
-  name: stackedsax.dotfiles
+- src: https://github.com/stackedsax/ansible-role-dotfiles.git
+  name: stackedsax.ansible-role-dotfiles
 
