@@ -25,3 +25,10 @@
     - java6
     - java7
     - java
+
+
+- name: install virtualenv
+  pip: name=virtualenv
+  
+- name: install virtualenvwrapper
+  pip: name=virtualenvwrapper
