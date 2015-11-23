@@ -5,6 +5,7 @@
 
 #- include: ansible-osx/virtualbox.yml
 #- include: ansible-osx/vagrant.yml
+- include: ansible-playbooks/mou.yml
 
 
   tasks:
