@@ -79,7 +79,8 @@
   roles:
     - profile-all
     - profile-developer
-    - stackedsax.ansible-role-dotfiles
+    # No idea why this dotfiles playbook isn't working right now
+    #- stackedsax.ansible-role-dotfiles
 
   vars:
     - computername: soulg-laptop
