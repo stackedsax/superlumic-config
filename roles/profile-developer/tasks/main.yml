@@ -23,7 +23,8 @@
   homebrew_cask: name={{item}} state=present
   with_items:
     - java6
-    - java7
+    #Some problem with java7 not being available as a cask anymore
+    #- java7
     - java
 
 
