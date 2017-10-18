@@ -2,29 +2,31 @@
 
 - name: tap caskroom/versions
   homebrew_tap: tap=caskroom/versions state=present
-      
+
 - name: tap caskroom/versions
   homebrew_tap: tap=homebrew/dupes state=present
 
 - name: install developer brew applications
   homebrew: name={{item}} state=latest
   with_items:
-    - wget
-    - pwgen
-    - xmlstarlet
-    - htop
-    - watch
-    - rsync
-    - git-flow
     - ant
+    - git-flow
+    - htop-osx
+    - mas
     - nano
+    - pwgen
+    - rsync
+    - watch
+    - wget
+    - xmlstarlet
 
 - name: install developer cask applications
   homebrew_cask: name={{item}} state=present
   with_items:
     - sequel-pro
     - java6
-    - java7
+    #Some problem with java7 not being available as a cask anymore
+    #- java7
     - java
 
 
@@ -37,7 +39,7 @@
 - name: install virtualenv
   pip: name=virtualenvwrapper extra_args='--ignore-installed six' #extra_args for El Capitan, for the moment
   sudo: yes
-  
+
 - name: improved nanorc | checkout repository
   git:
     repo: "https://github.com/scopatz/nanorc.git"
@@ -53,5 +55,23 @@
     version: "master"
     update: true
   tags: [configuration, theme, terminal]
-  
-- command: open monokai.terminal/Monokai.terminal
+
+- name: install the terminal profile
+  shell: open monokai.terminal/Monokai.terminal
+  when: terminal_profile_result.stdout != "Monokai"
+
+- name: set the Default Window Settings
+  osx_defaults:
+    domain: com.apple.Terminal
+    key: Default Window Settings
+    type: string
+    value: "monokai.terminal"
+    state: present
+
+- name: set the Startup Window Settings
+  osx_defaults:
+    domain: com.apple.Terminal
+    key: Startup Window Settings
+    type: string
+    value: "monokai.terminal"
+    state: present

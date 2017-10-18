@@ -4,7 +4,7 @@
   connection: local
 
   tasks:
-      
+
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
@@ -26,17 +26,22 @@
         - macvim
         - mou
         - omnigraffle
+        - private-internet-access
         - shiftit
         - skype
-        - slack
         - spotify
         - torbrowser
         - unrarx
-        - utorrent
+        - qbittorrent
         - vagrant
         - virtualbox
-        - xquartz       
-        
+        - xquartz
+
+    - name: install personal brew applications
+      homebrew: name={{item}} state=latest
+      with_items:
+        - task
+
     - name: create ssh directory
       become: yes
       file:
@@ -47,13 +52,13 @@
         mode: 0777
       with_items:
         - /etc/ssh
-        
+
     - name: personal ssh config
       become: yes
       copy:
         src: files/ssh_config
         dest: /etc/ssh_config
-        
+
     - name: personal ssh config in another location
       become: yes
       copy:
@@ -70,15 +75,14 @@
         create=true
       with_items:
         - { regexp: '^ascammon', line: 'ascammon ALL=(ALL) NOPASSWD: ALL' }
-        
+
     - name: Git Config | Install git completion
       raw: curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
       tags: git
 
 
   roles:
-    - profile-all
-    - profile-developer
+    #- profile-developer
     - stackedsax.ansible-role-dotfiles
 
   vars:
@@ -113,9 +117,8 @@
         - dest: "Ansible"
           repo: "https://github.com/clifford-github/sublime-ansible.git"
           version: "master"
-    - sublime_text_color_scheme: "Packages/Base16/base16-eighties.dark.tmTheme"
-    - sublime_text_theme: "Soda Dark 3.sublime-theme"
-   
+    - sublime_text_color_scheme: "Packages/Base16/Themes/base16-eighties.tmTheme"
+
     - osx_defaults:
       - domain: 'com.apple.dock'
         key: 'autohide'
