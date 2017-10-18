@@ -4,5 +4,6 @@
   homebrew_cask: name={{item}} state=present
   with_items:
     - slack
-    - google-drive
+    - google-backup-and-sync
+    - vlc
 
