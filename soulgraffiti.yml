@@ -5,113 +5,20 @@
 
   tasks:
     - homebrew_tap:
-        name: codekitchen/dinghy
-    - homebrew_tap:
         name: caskroom/fonts
-    - name: install node
-      homebrew: name={{item}} state=latest
-      with_items:
-        - node
-        - docker
-        - docker-compose
-        - docker-machine
-        - docker-machine-driver-xhyve
-        - brew-cask-completion
-        - dinghy
-    - shell: chown root:wheel $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-      become: yes
-    - shell: chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-      become: yes
+
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
-        - 1password
         - ableton-live-suite
-        - adium
-        - alfred
-        - appium
-        - carbon-copy-cloner
-        - cheatsheet
-        - cyberduck
-        - dropbox
-        - firefox
-        - font-fira-code
-        - google-backup-and-sync
-        - google-chrome
-        - grammarly
-        - handbrake
-        - hazel
-        - istat-menus
-        - iterm2
-        - jaxx
-        - kaleidoscope
-        - karabiner
-        - macvim
-        - microsoft-office
-        - mou
-        - omnigraffle
-        - paw
-        - shiftit
-        - skype
-        - slack
-        - spotify
-        - superduper
-        - torbrowser
-        - tower
-        - unrarx
-        - utorrent
-        - vagrant
-        - virtualbox
-        - xquartz
-
-    - name: create ssh directory
-      become: yes
-      file:
-        path: "{{item}}"
-        state: directory
-        owner: root
-        group: wheel
-        mode: 0777
-      with_items:
-        - /etc/ssh
-
-    - name: personal ssh config
-      become: yes
-      copy:
-        src: files/ssh_config
-        dest: /etc/ssh_config
-
-    - name: personal ssh config in another location
-      become: yes
-      copy:
-        src: files/ssh_config
-        dest: /etc/ssh/ssh_config
-
-    - name: add to sudoers without password
-      become: yes
-      lineinfile: >
-        dest=/etc/sudoers
-        regexp="{{ item.regexp }}"
-        line="{{ item.line }}"
-        state=present
-        create=true
-      with_items:
-        - { regexp: '^soulgraffiti', line: 'soulgraffiti ALL=(ALL) NOPASSWD: ALL' }
-
-    - name: Git Config | Install git completion
-      raw: curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
-      tags: git
-
 
   roles:
     - profile-all
-    - profile-developer
     - stackedsax.ansible-role-dotfiles
 
   vars:
-    - computername: soulg-laptop
     - git_user_name: stackedsax
-    - git_user_email: ascammon@hotmail.com
+    - git_user_email: stackedsax@users.noreply.github.com
     - sublime_packages:
         - dest: "SideBarEnhancements"
           repo: "https://github.com/titoBouzout/SideBarEnhancements"

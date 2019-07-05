@@ -1,9 +1,71 @@
 ---
+- name: tap caskroom/versions
+  homebrew_tap: tap=caskroom/versions state=present
+
+- name: install brew applications for all users
+  homebrew: name={{item}} state=latest
+  with_items:
+    - brew-cask-completion
+    - mas
+    - nano
+    - pwgen
+    - rsync
+    - watch
+    - wget
 
 - name: install cask applications for all users
   homebrew_cask: name={{item}} state=present
   with_items:
-    - slack
+    - 1password
+    - cheatsheet
+    - dropbox
+    - firefox
     - google-backup-and-sync
+    - google-chrome
+    - shiftit
+    - skype
+    - slack
+    - slack
+    - spotify
     - vlc
+    - xquartz
 
+- name: Git Config | Install git completion
+  raw: curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+  tags: git
+
+- name: improved nanorc | checkout repository
+  git:
+    repo: "https://github.com/scopatz/nanorc.git"
+    dest: ~/.nano
+    version: "master"
+    update: true
+  tags: [configuration, nano, improved-nanorc-checkout]
+
+- name: terminal themes | install monokai theme
+  git:
+    repo: "https://github.com/stephenway/monokai.terminal.git"
+    dest: monokai.terminal
+    version: "master"
+    update: true
+  tags: [configuration, theme, terminal]
+
+- name: install the terminal profile
+  shell: open monokai.terminal/Monokai.terminal
+  when: terminal_profile_result.stdout != "Monokai"
+
+- name: set the Default Window Settings
+  osx_defaults:
+    domain: com.apple.Terminal
+    key: Default Window Settings
+    type: string
+    value: "monokai.terminal"
+    state: present
+
+- name: set the Startup Window Settings
+  osx_defaults:
+    domain: com.apple.Terminal
+    key: Startup Window Settings
+    type: string
+    value: "monokai.terminal"
+    state: present

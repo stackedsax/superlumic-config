@@ -6,17 +6,11 @@
 - src: https://github.com/superlumic/ansible-role-osx-defaults.git
   name: roderik.superlumic-osx-defaults
 
-- src: https://github.com/superlumic/ansible-role-computername.git
-  name: roderik.superlumic-computername
-
 - src: https://github.com/superlumic/ansible-role-cli.git
   name: roderik.superlumic-cli
 
 - src: https://github.com/superlumic/ansible-role-sublimetext.git
   name: roderik.superlumic-sublimetext
-
-- src: https://github.com/superlumic/ansible-role-vim.git
-  name: roderik.superlumic-vim
 
 - src: https://github.com/stackedsax/ansible-role-dotfiles.git
   name: stackedsax.ansible-role-dotfiles
