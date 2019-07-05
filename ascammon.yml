@@ -82,7 +82,7 @@
 
 
   roles:
-    #- profile-developer
+    - profile-developer
     - stackedsax.ansible-role-dotfiles
 
   vars:
