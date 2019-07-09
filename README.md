@@ -1,17 +1,9 @@
-# superlumic-config
+# !Archived!
+I no longer use the config from superlumic to set up my machines.  Instead, I use my fork of [mac-dev-playbook](https://github.com/stackedsax/mac-dev-playbook), but with the superlumic wrapper to make everything just a little faster.  My superlumic fork is here: https://github.com/stackedsax/superlumic
 
-This is the default configuration "role" for "superlumic". You will want
-to fork this one and create your own "username.yml". Use the roles
-folder to create "profiles".
-
-How you organise your config files is entirely up to you, but this is
-how I do it. The "profile-all" role are the apps and settings that
-everyone in my company needs. Then I have a group file per type of
-installation (developers, designers, etc). In the "username.yml"
-playbook I then add all the specific things for that user.
-
-## Running Superlumic for ME!
+## Running 
+The newer command for running superlumic and using mac-dev-playbook is:
 
 ```
-curl -s https://raw.githubusercontent.com/superlumic/superlumic/master/superlumic | bash -s https://github.com/stackedsax/superlumic-config
+curl -s https://raw.githubusercontent.com/stackedsax/superlumic/master/superlumic | bash -s https://github.com/stackedsax/mac-dev-playbook
 ```

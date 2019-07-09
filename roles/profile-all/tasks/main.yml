@@ -5,9 +5,11 @@
 - name: install brew applications for all users
   homebrew: name={{item}} state=latest
   with_items:
+    - bash
     - bash-completion
     - mas
     - nano
+    - python
     - pwgen
     - rsync
     - watch
@@ -17,11 +19,13 @@
   homebrew_cask: name={{item}} state=present
   with_items:
     - 1password
+    - bbedit
     - cheatsheet
     - dropbox
     - firefox
     - google-backup-and-sync
     - google-chrome
+    - iterm2
     - shiftit
     - skype
     - slack
